@@ -1,80 +1,49 @@
 # Library-Data-Base
-# Library Management System
+**Project Proposal**
+**Hunter Hayden CSCI 121**
 
-**CSCI 121 Final Project Proposal**  
-**Hunter Hayden**
+---
 
-## Purpose
+## What is this project?
+This is a command-line tool designed to help small libraries or personal collectors get away from using messy spreadsheets or paper notes. It’s an automated system that handles everything from adding new books to tracking who has borrowed what.
 
-This project is intended to demonstrate mastery of concepts learned in CSCI 121, especially object-oriented programming, data structures, and basic file storage.
+## Why build it?
+The main goal is to show how to use Object-Oriented Programming (OOP) to solve a real-world problem. Instead of writing long, complicated "if-else" statements, I’m using inheritance and polymorphism to let the code handle different rules for different items automatically.
 
-## Overview
+## How it works (The Data Stuff)
 
-The **Library Management System** is a command-line application that helps manage a collection of books and library members. The program will allow the user to add books, search for books, register members, borrow and return books, and view which books are currently available. It will also store data in a file so that the library collection and member information can be saved between sessions.
+### The Setup (Classes)
+I'm breaking the data down into a few main "buckets":
 
-This project models a real-world library system in a simple way and gives the user a practical tool for organizing books and borrowing activity.
+1. **Library Items:** I’ll have a base class called `LibraryItem`. From there, I’ll create specific types like `Book` and `Periodical`. 
+   * **The Trick:** Since a book can be kept longer than a magazine, I’ll use a polymorphic method to calculate the due date. The system will "just know" which rule to apply based on the item type.
 
-## Intended Users
+2. **Members:** I’ll have a `Member` class with subclasses for `Student` and `Faculty`. 
+   * **The Logic:** Students might only be allowed to check out 10 items, while Faculty can take 50. The code will check these limits automatically before allowing a checkout.
 
-The main users of this system would be:
-- a person managing a small library
-- a student building a simple book-tracking program
-- anyone who wants a clean way to organize books and borrowing records
+### Storage & Speed
+* **Fast Searching:** I’ll store everything in a `HashMap`. This way, if a library has 10,000 books, finding one by its ISBN is nearly instant.
+* **Saving Progress:** I’m using a simple CSV file (`library_data.csv`) to save everything. When the program starts, it reads the file to pick up where it left off. When you exit, it saves all the current changes.
 
-## Problems the Project Solves
+---
 
-This project is meant to solve the problem of keeping track of books manually. Instead of using paper notes or memory, the system will store books, members, and borrowing status in an organized structure. It will make it easier to:
-- find books quickly
-- see which books are available
-- keep track of who borrowed what
-- maintain records over time
+## Use Case: Checking Out a Book
+* **Step 1:** The user enters the Member ID and the Book ID.
+* **Step 2:** The system checks the "Member Map" to see if the person exists and hasn't hit their borrowing limit.
+* **Step 3:** The system checks the "Inventory Map" to see if the book is actually on the shelf.
+* **Step 4:** If everything is good, it links the book to the member and marks it as unavailable.
 
-## Data Design
+---
 
-The program will manage two main types of data:
+## The Game Plan (Milestones)
 
-### Book
-A book will store:
-- title
-- author
-- ISBN
-- availability status
+1. **Week 1:** Get the basic classes and the UML diagram finished and approved.
+2. **Week 2:** Build the "Children" classes (Book, Periodical, Student) and make sure the different borrowing rules work.
+3. **Week 3:** Build the main Library controller and get the HashMap searching working.
+4. **Week 4:** Set up the File I/O so the data actually saves to the computer.
+5. **Final Step:** Build the menu, clean up the text, and squash any bugs.
 
-### Member
-A member will store:
-- member ID
-- name
-- list of borrowed books
+---
 
-### Main Data Structure
-The program will likely use:
-- an `ArrayList<Book>` or `vector<Book>` for storing books
-- an `ArrayList<Member>` or `vector<Member>` for storing members
-
-These collections will be stored inside a main `Library` class.
-
-## Basic Structure
-
-```text
-Library
-├── books
-├── members
-├── addBook()
-├── removeBook()
-├── searchBook()
-├── registerMember()
-├── borrowBook()
-├── returnBook()
-├── saveData()
-└── loadData()
-
-Book
-├── title
-├── author
-├── ISBN
-└── available
-
-Member
-├── memberID
-├── name
-└── borrowedBooks
+## The Elevator Pitch
+"I’m building a Library Management System that uses smart object-oriented design to handle the heavy lifting of inventory tracking. Instead of a basic list, my project uses inheritance to automatically manage different rules—like shorter loan times for magazines or higher checkout limits for faculty members. It’s fast, it saves your data to a file so you never lose track of a book, and it’s built to scale easily as the collection grows."
