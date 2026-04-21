@@ -2,7 +2,6 @@
 **Project Proposal**
 **Hunter Hayden CSCI 121**
 
-
 ---
 
 ## What is this project?
