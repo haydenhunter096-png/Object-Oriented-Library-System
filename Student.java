@@ -4,7 +4,7 @@ public class Student extends Member {
     }
 
     @Override
-    public int getMaxLoans() {
-        return 10;
+    protected int getMaxLoans() {
+        return 5;
     }
 }

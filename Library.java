@@ -1,15 +1,15 @@
 import java.util.HashMap;
 
 public class Library {
-    private HashMap<String, LibraryItem> items = new HashMap<>();
-    private HashMap<String, Member> members = new HashMap<>();
-
+    private final HashMap<String, LibraryItem> items = new HashMap<>();
+    private final HashMap<String, Member> members = new HashMap<>();
+    
     public void addItem(LibraryItem item) {
         items.put(item.getId(), item);
     }
 
     public void addMember(Member member) {
-        members.put(member.id, member);
+        members.put(member.getId(), member);
     }
 
     public void checkout(String itemId, String memberId) {
@@ -31,5 +31,15 @@ public class Library {
 
         item.setAvailable(true);
         member.removeLoan();
+    }
+
+    public void printInventory() {
+        System.out.println("Library inventory:");
+        items.values().forEach(item ->
+            System.out.printf(" - %s: %s [%s]%n",
+                item.getId(),
+                item.getTitle(),
+                item.isAvailable() ? "Available" : "Checked out")
+        );
     }
 }

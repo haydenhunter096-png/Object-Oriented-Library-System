@@ -3,7 +3,8 @@ public class Faculty extends Member {
         super(id, name);
     }
 
-    public int getMaxLoans() {
-        return 50;
+    @Override
+    protected int getMaxLoans() {
+        return 10;
     }
 }
