@@ -48,10 +48,6 @@ Each member type can have different borrowing rules or limits. This helps show i
 ## How to Compile and Run
 
 In the terminal, compile all Java files:
-
-```bash
-javac *.java
-
 ````md
 ## How to Compile and Run
 
@@ -59,14 +55,10 @@ In the terminal, compile all Java files:
 
 ```bash
 javac *.java
+```bash
+
 
 ````md
-## How to Compile and Run
-
-In the terminal, compile all Java files:
-
-```bash
-javac *.java
 
 ## UML Diagram
 
