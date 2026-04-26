@@ -32,8 +32,41 @@ From this class, specialized item types are created:
 Each subclass can define its own behavior, such as different loan periods, using polymorphism.
 
 A central `Library` class manages the collection, searching, and file operations.
+### Member Classes
 
+The system also uses a base member class:
+
+- `Member` (base class)
+
+From this class, specialized member types are created:
+
+- `Student`
+- `Faculty`
+
+Each member type can have different borrowing rules or limits. This helps show inheritance and polymorphism in the project.
 ---
+## How to Compile and Run
+
+In the terminal, compile all Java files:
+
+```bash
+javac *.java
+
+````md
+## How to Compile and Run
+
+In the terminal, compile all Java files:
+
+```bash
+javac *.java
+
+````md
+## How to Compile and Run
+
+In the terminal, compile all Java files:
+
+```bash
+javac *.java
 
 ## UML Diagram
 
