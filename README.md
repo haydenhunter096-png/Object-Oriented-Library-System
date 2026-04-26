@@ -48,9 +48,6 @@ Each member type can have different borrowing rules or limits. This helps show i
 ## How to Compile and Run
 
 In the terminal, compile all Java files:
-## How to Compile and Run
-
-In the terminal, compile all Java files:
 
 javac *.java
 
