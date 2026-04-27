@@ -49,8 +49,7 @@ Each member type can have different borrowing rules or limits. This helps show i
 
 In the terminal, compile all Java files:
 
-javac *.java
-
+javac *.java && java Main
 
 
 
