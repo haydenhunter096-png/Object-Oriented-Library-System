@@ -1,16 +1,18 @@
+// import HashMap class for managing 
 import java.util.HashMap;
-
+// This class represents the library system, 
+// managing library items and members
 public class Library {
     private final HashMap<String, LibraryItem> items = new HashMap<>();
     private final HashMap<String, Member> members = new HashMap<>();
     
     public void addItem(LibraryItem item) {
         items.put(item.getId(), item);
-    }
+    } // end addItem
 
     public void addMember(Member member) {
         members.put(member.getId(), member);
-    }
+    } // end addMember
 
     public void checkout(String itemId, String memberId) {
         LibraryItem item = items.get(itemId);
@@ -21,7 +23,7 @@ public class Library {
 
         item.setAvailable(false);
         member.addLoan();
-    }
+    } // end checkout
 
     public void returnItem(String itemId, String memberId) {
         LibraryItem item = items.get(itemId);
@@ -31,7 +33,7 @@ public class Library {
 
         item.setAvailable(true);
         member.removeLoan();
-    }
+    } // end returnItem
 
     public void printInventory() {
         System.out.println("Library inventory:");
@@ -41,5 +43,5 @@ public class Library {
                 item.getTitle(),
                 item.isAvailable() ? "Available" : "Checked out")
         );
-    }
-}
+    } // end printInventory
+} // class end

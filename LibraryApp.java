@@ -1,5 +1,7 @@
+// import Scanner class for user input
 import java.util.Scanner;
-
+// This class represents the main application for the library system, 
+// providing a simple command-line interface
 public class LibraryApp {
     private final Library library = new Library();
     private final Scanner scanner = new Scanner(System.in);
@@ -13,8 +15,8 @@ public class LibraryApp {
             System.out.println("2) Checkout P1 to F1");
             System.out.println("3) Return B1 from S1");
             System.out.println("4) Return P1 from F1");
-            System.out.println("0) Exit");
-            System.out.print("> ");
+            System.out.println("0) Exit"); // output: String
+            System.out.print("> "); // outpu: prompt
 
             String choice = scanner.nextLine().trim();
             switch (choice) {
@@ -25,26 +27,26 @@ public class LibraryApp {
                 case "0" -> {
                     System.out.println("Exiting.");
                     return;
-                }
+                } // end case 0
                 default -> System.out.println("Invalid option.");
-            }
-        }
-    }
+            } // end switch
+        } // end while
+    } // end run
 
     private void seedData() {
         library.addItem(new Book("B1", "Dune", "Frank Herbert"));
         library.addItem(new Periodical("P1", "1984", 1));
         library.addMember(new Faculty("F1", "Mr. Jones"));
         library.addMember(new Student("S1", "Francis Webb"));
-    }
+    } // end seedData
 
     private void checkout(String itemId, String memberId) {
         library.checkout(itemId, memberId);
         System.out.println("Tried checkout: " + itemId + " -> " + memberId);
-    }
+    } // end checkout
 
     private void returnItem(String itemId, String memberId) {
         library.returnItem(itemId, memberId);
         System.out.println("Tried return: " + itemId + " <- " + memberId);
-    }
-}
+    } // end returnIteem
+} // class end
