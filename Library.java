@@ -14,6 +14,16 @@ public class Library {
         members.put(member.getId(), member);
     } // end addMember
 
+    public void removeItem(String itemId) {
+        LibraryItem removed = items.remove(itemId);
+
+        if (removed != null) {
+            System.out.println("Removed item: " + removed.getTitle());
+        } else {
+            System.out.println("Item not found.");
+        } // end if-else
+    } // end removeItem
+
     public void checkout(String itemId, String memberId) {
         LibraryItem item = items.get(itemId);
         Member member = members.get(memberId);

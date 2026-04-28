@@ -14,6 +14,7 @@ public class Main {
             System.out.println("Library menu:");
             System.out.println("1) Add a new book");
             System.out.println("2) Show inventory");
+            System.out.println("3) Remove an item");
             System.out.println("0) Exit");
             System.out.print("> ");
 
@@ -21,6 +22,7 @@ public class Main {
             switch (choice) {
                 case "1" -> addBook(lib, scanner);
                 case "2" -> lib.printInventory();
+                case "3" -> removeItem(lib, scanner);
                 case "0" -> {
                     System.out.println("Goodbye.");
                     scanner.close();
@@ -37,6 +39,13 @@ public class Main {
         lib.addItem(new Book("B3", "The Road", "Cormac McCarthy"));
         lib.addItem(new Periodical("P1", "Rolling Stone", 12));
     } // end seedInventory
+
+    private static void removeItem(Library lib, Scanner scanner) {
+        System.out.print("Enter item ID to remove: ");
+        String id = scanner.nextLine().trim();
+
+        lib.removeItem(id);
+} // end removeItem
 
     private static void addBook(Library lib, Scanner scanner) {
         System.out.print("Book ID: ");
