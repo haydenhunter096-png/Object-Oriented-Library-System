@@ -1,4 +1,4 @@
-# Library-Data-Base
+# Object-Oriented Library System
 
 **Project Proposal**  
 **Hunter Hayden CSCI 121**
