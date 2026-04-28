@@ -1,105 +1,130 @@
 # Library-Data-Base
-**Project Proposal**
+
+**Project Proposal**  
 **Hunter Hayden CSCI 121**
 
 ---
 
 ## What is this project?
 
-This project is a command-line library management system designed for small libraries or personal collections. It replaces messy spreadsheets or paper records with a structured system that allows users to add, search, and manage library items efficiently.
+This project is a command-line library management system for a small library or personal collection. It allows a user to add books, view inventory, check out items, and return items.
+
+The goal is to replace messy paper records or spreadsheets with a simple structured program.
 
 ---
 
 ## Why build it?
 
-The goal of this project is to demonstrate object-oriented programming (OOP) concepts in a real-world application. Instead of relying on long conditional statements, the program uses classes, inheritance, and polymorphism to manage different types of library items and user rules automatically.
+The goal of this project is to demonstrate object-oriented programming concepts in a real-world application.
+
+This project uses:
+
+- Classes
+- Inheritance
+- Encapsulation
+- Abstract classes
+- Method overriding
+- Collections such as `HashMap`
 
 ---
 
 ## How it works
 
-### Main Classes
+The system is built around an abstract base class:
 
-The system is built around a base class:
-
-- `LibraryItem` (base class)
+- `LibraryItem`
 
 From this class, specialized item types are created:
 
 - `Book`
 - `Periodical`
 
-Each subclass can define its own behavior, such as different loan periods, using polymorphism.
+A central `Library` class stores and manages the collection using a `HashMap`.
 
-A central `Library` class manages the collection, searching, and file operations.
-### Member Classes
+The project also includes a base member class:
 
-The system also uses a base member class:
-
-- `Member` (base class)
+- `Member`
 
 From this class, specialized member types are created:
 
 - `Student`
 - `Faculty`
 
-Each member type can have different borrowing rules or limits. This helps show inheritance and polymorphism in the project.
+These member types show inheritance and allow different borrowing limits.
+
 ---
+
+## Current Features
+
+- Add a new book
+- Show inventory
+- Check out an item
+- Return an item
+- Track whether an item is available
+- Use different item types such as books and periodicals
+- Use different member types such as students and faculty
+
+---
+
+
 ## How to Compile and Run
 
-In the terminal, compile all Java files:
+In the terminal, compile and run all Java files:
 
+```bash
 javac *.java && java Main
 
 
-
-## UML Diagram
-
-```mermaid
 classDiagram
 
 class LibraryItem {
-  +String id
-  +String title
-  +boolean isAvailable
-  +int getLoanPeriod()
+  -String id
+  -String title
+  -boolean available
+  +String getId()
+  +String getTitle()
+  +boolean isAvailable()
+  +void setAvailable(boolean available)
 }
 
 class Book {
-  +String author
-  +int getLoanPeriod()
+  -String author
+  +String getAuthor()
 }
 
 class Periodical {
-  +int issueNumber
-  +int getLoanPeriod()
+  -int issueNumber
+  +int getIssueNumber()
 }
 
 class Member {
-  +String memberId
-  +String name
-  +int currentLoans
-  +int maxLoans
+  -String id
+  -String name
+  -int activeLoans
+  +String getId()
+  +String getName()
   +boolean canBorrow()
+  +void addLoan()
+  +void removeLoan()
+  #int getMaxLoans()
 }
 
 class Student {
-  +int maxLoans = 10
+  #int getMaxLoans()
 }
 
 class Faculty {
-  +int maxLoans = 50
+  #int getMaxLoans()
 }
 
 class Library {
-  +HashMap items
-  +HashMap members
-  +addItem()
-  +removeItem()
-  +checkoutItem()
-  +returnItem()
-  +loadCSV()
-  +saveCSV()
+  -HashMap~String, LibraryItem~ items
+  -HashMap~String, Member~ members
+  +void addItem(LibraryItem item)
+  +void addMember(Member member)
+  +void checkout(String itemId, String memberId)
+  +void returnItem(String itemId, String memberId)
+  +void printInventory()
 }
 
 LibraryItem <|-- Book
