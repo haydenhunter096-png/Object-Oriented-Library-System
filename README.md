@@ -73,8 +73,11 @@ In the terminal, compile and run all Java files:
 
 ```bash
 javac *.java && java Main
+---
+```
 
 
+```mermaid
 classDiagram
 
 class LibraryItem {
